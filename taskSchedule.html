@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf8" />
+    <title>任务规划(一站多星)</title>
+    <link rel="stylesheet" href="./static/gstc/style.css" />
+    <link rel="stylesheet" href="./static/gstc/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./static/css/bootstrap-slider.css" />
+    <!-- https://github.com/Bttstrp/bootstrap-switch/tree/master/dist -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <label for="ex1" class="control-label" style="
+        font-family: 'FangSong';
+        font-size: medium;
+        margin-left: 10px;
+      ">时间轴缩放
+    </label>
+    <input id="ex1" data-slider-id="ex1Slider" type="text" data-slider-min="11" data-slider-max="15" data-slider-step="1" data-slider-value="12" />
+    <div id="gstc"></div>
+    <!-- 分割线 -->
+    <hr class="new5" style="
+        filter: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10);
+      " width="100%" color="#987cb9" size="1" />
+    <!-- 分割线 end -->
+    <div class="d-flex flex-row" style="font-size: 14px">
+        <div style="max-width: 340px !important">
+            <fieldset style="margin-left: 10px; margin-right: 10px">
+                <legend>任务规划参数</legend>
+                <label style="font-size: 14px; font-family: 'FangSong'">
+            <input type="checkbox" name="checkbox_discard_less_5_minus" />
+            丢弃小于5分钟的时间段
+          </label>
+                <label>
+            <input type="checkbox" name="checkbox_discard_less_10_degree" />
+            丢弃最大仰角小于10度的时间段
+          </label>
+                <label>
+            <input type="checkbox" name="checkbox_discard_reset_prepare_time" />
+            考虑接收站复位时间及准备时间
+          </label>
+                <div>
+                    <button type="button" class="btn btn-primary" id="advanceOptions">
+              高级选项
+            </button>
+                    <button type="button" class="btn btn-primary" id="reschedule">
+              重新规划
+            </button>
+                    <button type="button" class="btn btn-primary" id="export_xls">
+              导出结果
+            </button>
+                </div>
+            </fieldset>
+        </div>
+        <div class="flex-grow-1" style="margin-left: 25px">
+            <h4>任务规划结果</h4>
+            <table name="table-header">
+                <tr>
+                    <th style="width: 40px">序号</th>
+                    <th style="width: 300px">卫星</th>
+                    <th style="width: 300px">开始时间</th>
+                    <th style="width: 300px">结束时间</th>
+                    <th style="width: 150px">接收时长</th>
+                </tr>
+            </table>
+            <div id="table-container" name="table-container" style="max-height: 150px; overflow: scroll; font-size: 14px">
+                <table id="task_table"></table>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="settings_adv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 600px">
+            <div class="modal-content" id="settings-content-id">
+                <!-- header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">高级选项</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+                </div>
+                <!-- header end-->
+                <!-- body -->
+                <div class="modal-body" id="settings">
+                    <h4>任务权重设计</h4>
+                    <select style="height: 30px" id="weightMethod">
+              <option>接收时长</option>
+              <option>接收时长*卫星权重</option>
+              <option>接收时长*卫星权重*最大仰角/90</option>
+            </select>
+                </div>
+                <!-- body end-->
+                <!-- footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+              关闭
+            </button>
+                </div>
+                <!-- footer end-->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>
+    <!-- https://seiyria.com/bootstrap-slider/#example-9 -->
+    <script src="./static/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script type="module" src="./static/js/taskSchedule.js"></script>
+
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!-- <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <!-- <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script> -->
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+    <!-- <script src=" -->
+    <!-- ./static/js/bootstrap-switch.js"></script> -->
+    <!-- https://github.com/Bttstrp/bootstrap-switch/tree/master/dist -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+    <!-- https://github.com/hhurz/tableExport.jquery.plugin -->
+    <script type="text/javascript" src="./static/tableExport/libs/FileSaver/FileSaver.min.js"></script>
+    <script type="text/javascript" src="./static/tableExport/libs/js-xlsx/xlsx.core.min.js"></script>
+    <script type="text/javascript" src="./static/tableExport/libs/pdfmake/pdfmake.min.js"></script>
+    <script type="text/javascript" src="./static/tableExport/libs/pdfmake/vfs_fonts.js"></script>
+    <script type="text/javascript" src="./static/tableExport/libs/html2canvas/html2canvas.min.js"></script>
+    <script type="text/javascript" src="./static/tableExport/tableExport.js"></script>
+    <style>
+        #ex1Slider .slider-selection {
+            background: #bababa;
+        }
+        
+        .even {
+            background: rgba(25, 102, 112, 0.342);
+        }
+        
+        .odd {
+            background: rgba(67, 112, 25, 0.342);
+        }
+        
+        td {
+            white-space: nowrap;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        th {
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        hr.new5 {
+            border: 3px solid green;
+            border-radius: 5px;
+        }
+        
+        table {
+            table-layout: fixed;
+        }
+    </style>
+    <script>
+        // 1.size ：开关大小。可选值有 mini, small, normal, large
+        // 2.onColor：开关中开按钮的颜色。可选值有 primary, info, success, warning, danger, default
+        // 3.offColor：开关中关按钮的颜色。可选值 primary, info, success, warning, danger, default
+        // 4.onText：开关中开按钮的文本，默认是 ON
+        // 5.offText：开关中关按钮的文本，默认是 OFF
+        // 6.onInit：初始化组件的事件。
+        // 7.onSwitchChange：开关变化时的事件。
+        // 8.data-on-color/ data-off-color: primary 深蓝, info 浅蓝, success 绿色, warning 黄色, danger 红色
+        $("[name='checkbox_discard_less_5_minus']").bootstrapSwitch({
+            onText: "开启",
+            offText: "关闭",
+            onColor: "success",
+            offColor: "default",
+            size: "small",
+            onSwitchChange: function(event, state) {
+                if (state == true) {} else {}
+            }
+        });
+        $("[name='checkbox_discard_less_10_degree']").bootstrapSwitch({
+            onText: "开启",
+            offText: "关闭",
+            onColor: "success",
+            offColor: "default",
+            size: "small",
+            onSwitchChange: function(event, state) {
+                if (state == true) {} else {}
+            }
+        });
+        $("[name='checkbox_discard_reset_prepare_time']").bootstrapSwitch({
+            onText: "开启",
+            offText: "关闭",
+            onColor: "success",
+            offColor: "default",
+            size: "small",
+            onSwitchChange: function(event, state) {
+                if (state == true) {} else {}
+            }
+        });
+    </script>
+</body>
+
+</html>

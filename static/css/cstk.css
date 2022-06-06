@@ -1,0 +1,509 @@
+.latlon-control {
+  /* display: block; */
+  /* width: 85%; */
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+#mainPanel {
+  color: whitesmoke;
+  /* color: #337ab7; */
+  font: bold 13px song;
+  background-color: rgba(225, 233, 233, 0);
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  width: 300px;
+  height: 65%;
+}
+
+.grd-main-cont {
+  overflow: hidden;
+  background-color: #00000000;
+}
+
+/* headers container */
+
+.grd-head-cont {
+  overflow: hidden;
+  background-color: #00000000;
+}
+
+/* header cell */
+
+.grd-head-cont th {
+  background-color: #00000000;
+  color: rgb(99, 38, 38);
+  border-right: 1px dotted #fff;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* table container */
+
+.grd-cont {
+  background-color: #00000000;
+}
+
+/* cell */
+
+.grd-cont td {
+  border-bottom: 1px solid #ccc;
+  border-right: 1px dotted #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* head and body tables */
+
+.grd-head-cont table,
+.grd-cont table {
+  font-size: 1.1em;
+  border-collapse: collapse;
+}
+
+/* bottom toolbar override */
+
+.grd-main-cont > .grd_inf {
+  background-color: rgb(204, 204, 204);
+  border-top: 1px solid rgb(145, 36, 36);
+}
+
+#simu-settings-container {
+  color: whitesmoke;
+  background-color: rgba(225, 233, 233, 0);
+  position: absolute;
+  left: 370px;
+  top: 50px;
+  width: 380px;
+  height: auto;
+  display: none;
+}
+
+#mode-realtime-simulation {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  margin-left: -280px;
+  color: gold;
+}
+
+#modeSimu {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border-radius: 20px;
+  background-image: url("../simulation.png");
+}
+
+#modeSimu:hover {
+  width: 85px;
+  height: 85px;
+  border-radius: 20px;
+  background-color: rgba(224, 224, 224, 0.72);
+  background-image: url("../simulation.png");
+}
+
+#modeRealtime {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../realtime.png");
+}
+
+#modeRealtime:hover {
+  width: 85px;
+  height: 85px;
+  border-radius: 20px;
+  background-color: rgba(224, 224, 224, 0.72);
+  background-image: url("../realtime.png");
+}
+
+#TaskSchedule {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../task.png");
+}
+
+#TaskSchedule:hover {
+  height: 85px;
+  width: 85px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.72);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../task.png");
+}
+
+#SystemSettings {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../settings.png");
+}
+
+#SystemSettings:hover {
+  height: 85px;
+  width: 85px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.72);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../settings.png");
+}
+
+#coverage {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../aoi_0.png");
+}
+
+#coverage:hover {
+  height: 85px;
+  width: 85px;
+  background-color: rgba(191, 204, 204, 0.72);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../aoi_0.png");
+}
+
+#AboutUs {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../aboutus.png");
+}
+
+#AboutUs:hover {
+  width: 85px;
+  height: 85px;
+  border-radius: 20px;
+  background-color: rgba(224, 224, 224, 0.72);
+  background-image: url("../aboutus.png");
+}
+
+#help {
+  height: 75px;
+  width: 75px;
+  background-size: 100% 100%;
+  background-color: rgba(191, 204, 204, 0.493);
+  border: none;
+  border-radius: 20px;
+  background-image: url("../help.png");
+}
+
+#help:hover {
+  width: 85px;
+  height: 85px;
+  border-radius: 20px;
+  background-color: rgba(224, 224, 224, 0.72);
+  background-image: url("../help.png");
+}
+
+#executeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(191, 204, 204, 0.014);
+  background-image: url("../track.png");
+}
+
+#ganteBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(191, 204, 204, 0.014);
+  background-image: url("../gantview.png");
+}
+
+#pickBtn,
+#pickPOIBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: rgba(191, 204, 204, 0.014);
+  background-image: url("../mousePick-small.png");
+}
+
+#addAOIBtn,
+#addPOIBtn {
+  width: 34px;
+  height: 34px;
+  padding: 0px;
+  border-radius: 50%;
+  background-color: rgba(191, 204, 204, 0.014);
+  background-image: url("../add0-small.png");
+}
+
+.row-pad3 {
+  padding-left: 15px;
+  padding-right: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+#create-track-table-container {
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  display: none;
+  padding: 0px;
+  background-color: rgba(85, 85, 85, 0);
+  border: none;
+}
+
+#access-time-container {
+  position: absolute;
+  right: 10px;
+  top: 450px;
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  padding: 0px;
+  background-color: rgba(85, 85, 85, 0);
+  border: none;
+}
+
+#create-track-table-div {
+  background-color: rgba(85, 85, 85, 0);
+  max-height: 490px;
+  overflow: scroll;
+}
+
+#create-access-time-table-div {
+  background-color: rgba(85, 85, 85, 0);
+  max-height: 490px;
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background-color: #f5f5f53a;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+#global-progressbar {
+  position: absolute;
+  width: 800px;
+  left: 50%;
+  margin-left: -400px;
+  top: 50px;
+  display: none;
+}
+
+.popover {
+  background: rgba(25, 102, 112, 0.342);
+  font-family: FangSong;
+}
+
+#gantt_here {
+  width: 100%;
+  min-height: 500px;
+}
+
+.remove_aoi_button {
+  width: 25px;
+  height: 25px;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(161, 161, 161, 0.1);
+  background-image: url("../delete-small.png");
+}
+
+.remove_aoi_button:hover {
+  width: 26px;
+  height: 26px;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(161, 161, 161, 0.2);
+  background-image: url("../delete-small.png");
+}
+
+.satellite_attribute {
+  width: 25px;
+  height: 25px;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(161, 161, 161, 0.1);
+  background-image: url("../settings-small.png");
+}
+
+.satellite_attribute:hover {
+  width: 26px;
+  height: 26px;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(161, 161, 161, 0.2);
+  background-image: url("../settings-small.png");
+}
+
+#satelliteGroupBox {
+  margin: 0px;
+  padding: 0px;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+#facilityGroupBox {
+  margin: 0px;
+  padding: 0px;
+  max-height: 150px;
+  overflow: scroll;
+}
+
+.even_s {
+  background: rgba(25, 102, 112, 0.342);
+}
+
+.odd_s {
+  background: rgba(67, 112, 25, 0.342);
+}
+
+.selected {
+  background: rgba(177, 78, 13, 0.742);
+}
+
+#satellite-content-id,
+#settings-content-id {
+  background-color: rgba(25, 102, 112, 0.342);
+  color: whitesmoke;
+}
+
+#facility-content-id {
+  background-color: rgba(25, 102, 112, 0.342);
+  color: whitesmoke;
+}
+
+.btn-default {
+  background: rgba(25, 102, 112, 0.342);
+  color: whitesmoke;
+}
+
+.inner {
+  max-height: 256px;
+  overflow: scroll;
+  background: rgba(25, 102, 112, 0.342);
+}
+
+.btn-default:hover {
+  background: rgba(25, 102, 112, 0.342);
+  color: whitesmoke;
+}
+
+.gridtable {
+  margin-top: 5px;
+  width: 100%;
+  font-family: FangSong;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  border-width: 1px;
+  border-color: #666666;
+  border-collapse: collapse;
+}
+
+.gridtable tbody {
+  display: block;
+  overflow-y: auto;
+  overflow-x: auto;
+  height: 350px;
+}
+
+.gridtable td {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #ffffff3b;
+  text-align: center;
+}
+
+.gridtable td input {
+  width: 95%;
+  height: 30px;
+}
+
+.gridtable td textarea {
+  width: 95%;
+  height: 30px;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.even_s {
+  background: rgba(25, 102, 112, 0.342);
+}
+
+.odd_s {
+  background: rgba(67, 112, 25, 0.342);
+}
+
+.filter_input {
+  width: 100%;
+  height: 30px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: white !important;
+  font-size: 16;
+  background-color: rgba(182, 214, 214, 0) !important;
+  border: 1px solid #ccc;
+  border-top-color: rgb(204, 204, 204);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: rgb(204, 204, 204);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: rgb(204, 204, 204);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(204, 204, 204);
+  border-left-style: solid;
+  border-left-width: 1px;
+}

@@ -1,0 +1,383 @@
+<div
+  class="modal"
+  id="coverage-modal-dialog"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="schedule-title"
+  style="height: 700px; left: 50%; width: 570px; margin-left: -285px; top: 20px"
+>
+  <div class="modal-dialog" role="document" style="width: 100%">
+    <div
+      class="modal-content"
+      style="background-color: rgba(25, 102, 112, 0.342); color: whitesmoke"
+    >
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="coverage-title">覆盖分析</h4>
+      </div>
+      <div class="modal-body" id="coverage-anasys-table">
+        <!--#0 modal-body content-->
+        <ul id="tab_cover_schedule" class="nav nav-tabs">
+          <li class="active">
+            <a href="#point-coverage" data-toggle="tab">点覆盖分析</a>
+          </li>
+          <li>
+            <a href="#one-star-coverage" data-toggle="tab">单星覆盖分析</a>
+          </li>
+          <li>
+            <a href="#multiple-star-coverage" data-toggle="tab">星座覆盖分析</a>
+          </li>
+        </ul>
+        <div id="theTabContent" class="tab-content">
+          <!-- 下面是点覆盖分析 -->
+          <div class="tab-pane fade in active" id="point-coverage">
+            <p>卫星参数和感兴趣点(POI)参数可在卫星面板及POI面板中设置。</p>
+            <label for="coverage-select-poi">POI</label>
+            <!-- bootstrap select -->
+            <select
+              id="coverage-select-poi"
+              class="selectpicker"
+              data-live-search="true"
+              title="选择感兴趣点"
+            ></select>
+            <!-- bootstrap select end-->
+            <label for="coverage-select-satellite-poi">卫星</label>
+            <select
+              id="coverage-select-satellite-poi"
+              class="selectpicker"
+              data-live-search="true"
+              data-max-options="15"
+              multiple
+              title="选择卫星"
+            ></select>
+          </div>
+          <!-- 下面是单星覆盖分析 -->
+          <div
+            class="tab-pane fade in"
+            id="one-star-coverage"
+            style="margin: 0px"
+          >
+            <!--#0.1 one-star-coveraget content-->
+            <p>卫星参数和感兴趣区域(AOI)参数可在卫星面板及AOI面板中设置。</p>
+            <label for="coverage-select-aoi">AOI</label>
+            <!-- bootstrap select -->
+            <select
+              id="coverage-select-aoi"
+              class="selectpicker"
+              data-live-search="true"
+              title="选择感兴趣区域"
+            ></select>
+            <!-- bootstrap select end-->
+            <label for="coverage-select-satellite">卫星</label>
+            <select
+              id="coverage-select-satellite"
+              class="selectpicker"
+              data-live-search="true"
+              title="选择卫星"
+            ></select>
+            <hr align="center" width="100%" color="#987cb9" size="1" />
+            <!-- 在这里插入网格密度 -->
+            <div
+              class="row"
+              style="padding-left: 0px; padding-top: 5px; margin-bottom: 0px"
+            >
+              <label class="col-md-3 control-label" style="padding-top: 8px"
+                >网格密度</label
+              >
+              <input
+                class="col-md-3 dialog_input"
+                type="text"
+                id="grid-size"
+                value="0.5"
+              />
+              <label class="col-md-3 control-label">°</label>
+            </div>
+            <!-- 网格密度 end-->
+            <!--#0.1 one-star-coveraget content end-->
+          </div>
+          <div class="tab-pane fade" id="multiple-star-coverage">
+            <!--#0.2 multiple-star-coveraget content-->
+            <p>~~ 星座覆盖分析，6月才开始，亲！</p>
+            <!--#0.2 multiple-star-coveraget content end-->
+          </div>
+        </div>
+        <!--#0.3 date picker  -->
+        <div
+          class="container-fluid"
+          style="
+            background-color: rgba(182, 214, 214, 0);
+            padding: 0px;
+            margin-top: 0px;
+          "
+        >
+          <!--#0.3.1 first row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label class="col-md-3 control-label" style="padding-top: 8px"
+              >开始日期</label
+            >
+            <div
+              class="input-group date form_date col-md-8"
+              data-date=""
+              data-date-format="yyyy-mm-dd"
+              data-link-field="dtp_input2"
+              data-link-format="yyyy-mm-dd"
+            >
+              <input
+                class="form-control dialog_input"
+                id="startCoverAnaDate"
+                size="16"
+                type="text"
+                value=""
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-calendar"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.1 first row end-->
+          <!--#0.3.2 second row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label
+              for="dtp_input1"
+              class="col-md-3 control-label"
+              style="padding-top: 8px"
+              >开始时间</label
+            >
+            <div
+              class="input-group date form_time col-md-8"
+              data-date=""
+              data-date-format="hh:ii:ss"
+              data-link-field="dtp_input3"
+              data-link-format="hh:ii:ss"
+            >
+              <input
+                class="form-control dialog_input"
+                id="startCoverAnaTime"
+                size="16"
+                type="text"
+                value=""
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-time"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.2 second row end-->
+          <!--#0.3.3 third row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label class="col-md-3 control-label" style="padding-top: 8px"
+              >结束日期</label
+            >
+            <div
+              class="input-group date form_date col-md-8"
+              data-date=""
+              data-date-format="yyyy-mm-dd"
+              data-link-field="dtp_input2"
+              data-link-format="yyyy-mm-dd"
+            >
+              <input
+                class="form-control dialog_input"
+                id="endCoverAnaDate"
+                size="16"
+                type="text"
+                value=""
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-calendar"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.3 third row end-->
+          <!--#0.3.4 fourth row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label class="col-md-3 control-label" style="padding-top: 8px"
+              >结束时间</label
+            >
+            <div
+              class="input-group date form_time col-md-8"
+              data-date=""
+              data-date-format="hh:ii:ss"
+              data-link-field="dtp_input3"
+              data-link-format="hh:ii:ss"
+            >
+              <input
+                class="form-control dialog_input"
+                id="endCoverAnaTime"
+                size="16"
+                type="text"
+                value=""
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-time"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.4 fourth row end-->
+        </div>
+        <!--#0.3 date picker end -->
+        <!--#0 modal-body content end-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btnCoverageExec" class="btn btn-primary">
+          执行
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          关闭
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".form_date").datetimepicker({
+    language: "zh-CN",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0,
+  });
+  $(".form_time").datetimepicker({
+    language: "zh-CN",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 1,
+    minView: 0,
+    maxView: 1,
+    forceParse: 0,
+  });
+</script>
+
+<style>
+  .box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .dialog_input {
+    height: 34px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    color: white !important;
+    font-size: 16;
+    background-color: rgba(182, 214, 214, 0) !important;
+    border: 1px solid #ccc;
+    border-top-color: rgb(204, 204, 204);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(204, 204, 204);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(204, 204, 204);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(204, 204, 204);
+    border-left-style: solid;
+    border-left-width: 1px;
+  }
+</style>

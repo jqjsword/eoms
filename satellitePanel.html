@@ -1,0 +1,191 @@
+<div class="panel-group" id="mainPanel">
+  <div
+    class="panel panel-primary"
+    style="background-color: rgba(182, 214, 214, 0)"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#mainPanel" href="#collapseOne"
+          >卫星
+        </a>
+      </h4>
+    </div>
+    <div
+      id="collapseOne"
+      class="panel-collapse collapse in"
+      style="background-color: rgba(161, 212, 212, 0.377)"
+    >
+      <div
+        id="satelliteGroupBox"
+        class="panel-body"
+        style="background-color: rgba(182, 214, 214, 0)"
+      >
+        <table id="satellite_table" style="width: 100%">
+          <tr>
+            <th style="width: 70%; text-align: center">筛选</th>
+            <th style="width: 30%; text-align: center"></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div
+    class="panel panel-primary"
+    style="background-color: rgba(182, 214, 214, 0)"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#mainPanel" href="#collapseTwo"
+          >地面站
+        </a>
+      </h4>
+    </div>
+    <div
+      id="collapseTwo"
+      class="panel-collapse collapse"
+      style="background-color: rgba(161, 212, 212, 0.377)"
+    >
+      <div
+        id="facilityGroupBox"
+        class="panel-body"
+        style="background-color: rgba(182, 214, 214, 0)"
+      >
+        <!-- <input type="checkbox" id="SelAllGroundStationCheck" class="form-check-input" />选择所有<br /> -->
+      </div>
+    </div>
+  </div>
+  <div
+    class="panel panel-primary"
+    style="background-color: rgba(182, 214, 214, 0)"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#mainPanel" href="#collapseThree"
+          >感兴趣(AOI)区域
+        </a>
+      </h4>
+    </div>
+    <div
+      id="collapseThree"
+      class="panel-collapse collapse"
+      style="background-color: rgba(161, 212, 212, 0.377)"
+    >
+      <div
+        id="AOIGroupBox"
+        class="panel-body"
+        style="padding: 0px; background-color: rgba(0, 0, 0, 0)"
+      >
+        <div class="container-fluid" style="padding: 0px">
+          <div class="row row-pad3">
+            <label class="col-lg-3 control-label" style="padding-top: 8px"
+              >名称</label
+            >
+            <input id="aoi-name" type="text" class="col-lg-8 latlon-control" />
+          </div>
+
+          <div class="row row-pad3">
+            <label class="col-lg-3 control-label" style="padding-top: 8px"
+              >左上角</label
+            >
+            <input id="aoi-ul" type="text" class="col-lg-8 latlon-control" />
+          </div>
+          <div class="row row-pad3">
+            <label class="col-lg-3" style="padding-top: 8px">右下角</label>
+            <input id="aoi-lr" type="text" class="col-lg-8 latlon-control" />
+          </div>
+        </div>
+
+        <!--excute button-->
+        <div
+          style="position: relative; width: 80px; left: 50%; margin-left: -40px"
+        >
+          <input
+            type="button"
+            id="pickBtn"
+            data-toggle="tooltip"
+            title="鼠标拾取"
+          />
+          <input
+            type="button"
+            id="addAOIBtn"
+            data-toggle="tooltip"
+            title="添加"
+          />
+        </div>
+        <!--execute button end-->
+        <!-- aoi table -->
+        <!-- <table width="100%">
+                    <tr>
+                        <th>名称</th>
+                        <th>中心位置</th>
+                        <th>半径</th>
+                    </tr>
+                </table> -->
+        <div style="max-height: 250px; overflow: scroll">
+          <table width="100%" id="aoi_table_content"></table>
+        </div>
+        <!-- aoi table end -->
+      </div>
+    </div>
+  </div>
+  <!-- POI -->
+  <div
+    class="panel panel-primary"
+    style="background-color: rgba(182, 214, 214, 0)"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#mainPanel" href="#collapseFour"
+          >感兴趣点(POI)
+        </a>
+      </h4>
+    </div>
+  </div>
+  <div
+    id="collapseFour"
+    class="panel-collapse collapse"
+    style="background-color: rgba(161, 212, 212, 0.377)"
+  >
+    <div
+      id="POIGroupBox"
+      class="panel-body"
+      style="padding: 0px; background-color: rgba(0, 0, 0, 0)"
+    >
+      <div class="container-fluid" style="padding: 0px">
+        <div class="row row-pad3">
+          <label class="col-lg-3 control-label" style="padding-top: 8px"
+            >名称</label
+          >
+          <input id="poi-name" type="text" class="col-lg-8 latlon-control" />
+        </div>
+        <div class="row row-pad3">
+          <label class="col-lg-3 control-label" style="padding-top: 8px"
+            >位置</label
+          >
+          <input id="poi-loc" type="text" class="col-lg-8 latlon-control" />
+        </div>
+      </div>
+      <!--excute button-->
+      <div
+        style="position: relative; width: 80px; left: 50%; margin-left: -40px"
+      >
+        <input
+          type="button"
+          id="pickPOIBtn"
+          data-toggle="tooltip"
+          title="鼠标拾取"
+        />
+        <input
+          type="button"
+          id="addPOIBtn"
+          data-toggle="tooltip"
+          title="添加"
+        />
+      </div>
+      <!-- execute button end -->
+      <div style="max-height: 250px; overflow: scroll">
+        <table width="100%" id="poi_table_content"></table>
+      </div>
+    </div>
+  </div>
+</div>

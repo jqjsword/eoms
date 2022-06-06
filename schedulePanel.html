@@ -1,0 +1,344 @@
+<div
+  class="modal"
+  id="schedule-modal-dialog"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="schedule-title"
+  style="height: 700px; left: 50%; width: 570px; margin-left: -285px; top: 20px"
+>
+  <div class="modal-dialog" role="document" style="width: 100%">
+    <div
+      class="modal-content"
+      style="background-color: rgba(25, 102, 112, 0.342); color: whitesmoke"
+    >
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="schedule-title">任务规划</h4>
+      </div>
+      <div class="modal-body" id="task-schedule-table">
+        <!--#0 modal-body content-->
+        <ul id="tab_task_schedule" class="nav nav-tabs">
+          <li class="active">
+            <a href="#one-station-multiple-star" data-toggle="tab">一站多星</a>
+          </li>
+          <li>
+            <a href="#multiple-station-one-star" data-toggle="tab">多站一星</a>
+          </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="one-station-multiple-star">
+            <!--#0.1 one-station-multiple-start content-->
+            <p>
+              一个地面站接收多颗过境卫星的任务规划，地面站参数和卫星参数可在地面站面板及卫星面板中设置。
+            </p>
+            <label for="select-groundstation-single">地面站</label>
+            <select
+              id="select-groundstation-single"
+              class="selectpicker"
+              data-live-search="true"
+              title="可选择一个地面站"
+            ></select>
+            <label for="select-satellite-multi">卫星</label>
+            <select
+              id="select-satellite-multi"
+              class="selectpicker"
+              data-live-search="true"
+              title="最多可选择5颗卫星"
+              data-max-options="5"
+              multiple
+            ></select>
+            <!--#0.1 one-station-multiple-start content end-->
+          </div>
+          <div class="tab-pane fade" id="multiple-station-one-star">
+            <!--#0.2 multiple-station-one-start content-->
+            <p>
+              多个地面站接收同一颗过境卫星的任务规划，地面站参数和卫星参数可在地面站面板及卫星面板中设置。
+            </p>
+            <label for="select-groundstation-multi">地面站</label>
+            <select
+              id="select-groundstation-multi"
+              class="selectpicker"
+              data-live-search="true"
+              title="可选择多个地面站"
+              multiple
+            ></select>
+            <label for="select-satellite-single">卫星</label>
+            <select
+              id="select-satellite-single"
+              class="selectpicker"
+              title="可选择一颗卫星"
+              data-live-search="true"
+            ></select>
+            <!--#0.2 multiple-station-one-start content end-->
+          </div>
+        </div>
+        <!--#0.3 date picker  -->
+        <div
+          class="container-fluid"
+          style="
+            background-color: rgba(182, 214, 214, 0);
+            padding: 0px;
+            margin-top: 15px;
+          "
+        >
+          <!--#0.3.1 first row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5">
+            <label class="col-md-3 control-label" style="padding-top: 8px"
+              >开始日期</label
+            >
+            <div
+              class="input-group date form_date col-md-8"
+              data-date=""
+              data-date-format="yyyy-mm-dd"
+              data-link-field="dtp_input2"
+              data-link-format="yyyy-mm-dd"
+            >
+              <input
+                class="form-control"
+                id="startScheduleDate"
+                size="16"
+                type="text"
+                value=""
+                style="
+                  color: white;
+                  font-size: 16;
+                  background-color: rgba(182, 214, 214, 0);
+                "
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-calendar"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.1 first row end-->
+          <!--#0.3.2 second row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label
+              for="dtp_input1"
+              class="col-md-3 control-label"
+              style="padding-top: 8px"
+              >开始时间</label
+            >
+            <div
+              class="input-group date form_time col-md-8"
+              data-date=""
+              data-date-format="hh:ii:ss"
+              data-link-field="dtp_input3"
+              data-link-format="hh:ii:ss"
+            >
+              <input
+                class="form-control"
+                id="startScheduleTime"
+                size="16"
+                type="text"
+                value=""
+                style="
+                  color: white;
+                  font-size: 16;
+                  background-color: rgba(182, 214, 214, 0);
+                "
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-time"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.2 second row end-->
+          <!--#0.3.3 third row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label class="col-md-3 control-label" style="padding-top: 8px"
+              >结束日期</label
+            >
+            <div
+              class="input-group date form_date col-md-8"
+              data-date=""
+              data-date-format="yyyy-mm-dd"
+              data-link-field="dtp_input2"
+              data-link-format="yyyy-mm-dd"
+            >
+              <input
+                class="form-control"
+                id="endScheduleDate"
+                size="16"
+                type="text"
+                value=""
+                style="
+                  color: white;
+                  font-size: 16;
+                  background-color: rgba(182, 214, 214, 0);
+                "
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-calendar"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.3 third row end-->
+          <!--#0.3.4 fourth row-->
+          <div class="row" style="padding-left: 0px; padding-top: 5px">
+            <label class="col-md-3 control-label" style="padding-top: 8px"
+              >结束时间</label
+            >
+            <div
+              class="input-group date form_time col-md-8"
+              data-date=""
+              data-date-format="hh:ii:ss"
+              data-link-field="dtp_input3"
+              data-link-format="hh:ii:ss"
+            >
+              <input
+                class="form-control"
+                id="endScheduleTime"
+                size="16"
+                type="text"
+                value=""
+                style="
+                  color: white;
+                  font-size: 16;
+                  background-color: rgba(182, 214, 214, 0);
+                "
+                readonly
+              />
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-remove"
+                  style="
+                    background-color: rgba(182, 214, 214, 1);
+                    border-radius: 50%;
+                  "
+                ></span
+              ></span>
+              <span
+                class="input-group-addon"
+                style="
+                  background-color: rgba(182, 214, 214, 1);
+                  border-radius: 50%;
+                "
+                ><span
+                  class="glyphicon glyphicon-time"
+                  style="background-color: rgba(182, 214, 214, 1)"
+                ></span
+              ></span>
+            </div>
+          </div>
+          <!--#0.3.4 fourth row end-->
+        </div>
+        <!--#0.3 date picker end -->
+        <!--#0 modal-body content end-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btnScheduleExec" class="btn btn-primary">
+          执行
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          关闭
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".form_date").datetimepicker({
+    language: "zh-CN",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0,
+  });
+  $(".form_time").datetimepicker({
+    language: "zh-CN",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 1,
+    minView: 0,
+    maxView: 1,
+    forceParse: 0,
+  });
+</script>

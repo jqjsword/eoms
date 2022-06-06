@@ -1,0 +1,58 @@
+<div class="modal" id="setting-dialog" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" style="height: 700px; top: 20px">
+    <div class="modal-dialog" role="document" style="width: 600px">
+        <div class="modal-content" id="settings-content-id">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+                <h4 class="modal-title" id="settingsModalLabel">系统配置</h4>
+            </div>
+            <div class="modal-body">
+                <ul id="tab_schedule" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#displaySettings" data-toggle="tab">显示属性</a>
+                    </li>
+                    <li>
+                        <a href="#otherSettings" data-toggle="tab">其它属性</a>
+                    </li>
+                </ul>
+                <div id="settingTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="displaySettings">
+                        <input id="anti_" type="checkbox" class="form-check-input" />开启抗锯齿
+                        <br />
+                        <input id="showLngLat" type="checkbox" class="form-check-input" />显示经纬度
+                        <br />
+                        <input id="showEquator" type="checkbox" class="form-check-input" />显示赤道面
+                        <br />
+                        <input id="showLighting" type="checkbox" class="form-check-input" />开启日照
+                        <br />
+                        <label for="track-dur">卫星轨迹显示时长
+              <input
+                id="track-dur"
+                type="text"
+                class="dialog_input"
+                value="30"
+                style="width: 40px !important"
+              />分钟
+            </label>
+                        <label for="track-alti-egr">卫星高度夸张倍数
+              <input
+                id="track-alti-egr"
+                type="text"
+                class="dialog_input"
+                value="3"
+                style="width: 40px !important"
+              />倍
+            </label>
+                    </div>
+                    <div class="tab-pane fade" id="otherSettings"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
+          关闭
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

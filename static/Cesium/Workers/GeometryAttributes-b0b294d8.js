@@ -1,0 +1,2 @@
+define(["exports","./when-208fe5b0"],function(t,n){"use strict";t.GeometryAttributes=function(t){t=n.defaultValue(t,n.defaultValue.EMPTY_OBJECT),this.position=t.position,this.normal=t.normal,this.st=t.st,this.bitangent=t.bitangent,this.tangent=t.tangent,this.color=t.color}});
+//# sourceMappingURL=GeometryAttributes-b0b294d8.js.map

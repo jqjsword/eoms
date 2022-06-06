@@ -1,0 +1,105 @@
+<div
+  class="modal"
+  id="satellite-attri-dialog"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  style="height: 700px; top: 20px"
+  name=""
+>
+  <div class="modal-dialog" role="document" style="width: 600px">
+    <!-- 卫星属性颜色设置 -->
+    <div class="modal-content" id="satellite-content-id">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">卫星属性</h4>
+      </div>
+
+      <div class="modal-body" style="height: 60px">
+        <div style="float: left">
+          <label for="sensor-pattern">传感器模式</label>
+          <select
+            id="sensor-pattern"
+            class="selectpicker"
+            data-live-search="true"
+            title="选择感传感器模式"
+          >
+            <option value="1">简单圆锥模型</option>
+            <option value="2">CCD传感器模型</option>
+          </select>
+          <script>
+            $("#sensor-pattern").change(function () {
+              var index = $(this).val();
+              if (index == 1) {
+                var div = document.getElementById("CCDAngle-input");
+                div.style.display = "none";
+                div = document.getElementById("ConeAngle-input");
+                div.style.display = "block";
+              } else if (index == 2) {
+                var div = document.getElementById("ConeAngle-input");
+                div.style.display = "none";
+                div = document.getElementById("CCDAngle-input");
+                div.style.display = "block";
+              }
+            });
+          </script>
+        </div>
+
+        <div
+          id="ConeAngle-input"
+          style="width: 230px; right: 0px; float: right"
+        >
+          <label for="cone-half-angle">锥体半角</label>
+          <input
+            id="cone-half-angle"
+            type="text"
+            class="filter_input"
+            style="width: 130px !important"
+            value="60"
+          />
+          <label>°</label>
+        </div>
+
+        <div
+          id="CCDAngle-input"
+          style="width: 230px; height: 60px; float: right; display: none"
+        >
+          <label for="CCDLevel-half-angle">水平半角</label>
+          <input
+            id="CCDLevel-half-angle"
+            type="text"
+            class="filter_input"
+            style="width: 130px !important"
+            value="60"
+          />
+          <label>°</label>
+
+          <label for="CCDVertical-half-angle">垂直半角</label>
+          <input
+            id="CCDVertical-half-angle"
+            type="text"
+            class="filter_input"
+            style="width: 130px !important"
+            value="60"
+          />
+          <label>°</label>
+        </div>
+      </div>
+      <div id="satellite-attri-table" style="border: 15px">
+        <!--to be added-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          关闭
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

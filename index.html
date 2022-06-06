@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8" />
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>CSTK 卫星任务规划系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./static/css/CesiumViewer.css" media="screen" />
+    <link rel="stylesheet" href="./static/jquery-ui-1.12.1/jquery-ui.css" />
+    <!-- <最新版本的 Bootstrap 核心 CSS 文件 > -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./static/css/bootstrap-theme.min.css" />
+    <link href="./static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="./static/css/toastr.min.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./static/tablefilter/style/tablefilter.css" />
+    <!-- <link rel="stylesheet" href="./static/css/gantt/codebase/dhtmlxgantt.css?v=7.0.13" /> -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css" /> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="./static/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="./static/css/cstk.css" />
+
+    <style>
+        .nav>li>a:focus,
+        .nav>li>a:hover {
+            text-decoration: none;
+            background-color: rgba(67, 112, 25, 0.342);
+        }
+        
+        .nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:focus,
+        .nav-tabs>li.active>a:hover {
+            color: #337ab7;
+            cursor: default;
+            background-color: rgba(67, 112, 25, 0.342);
+            border: 1px solid #ddd;
+            border-bottom-color: transparent;
+        }
+    </style>
+    <script src="./static/js/jquery.min.js"></script>
+    <script src="./static/tablefilter/tablefilter.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#satellite_panel").load("./satellitePanel.html");
+            $("#positionlabels").load("./positionlabels.html");
+            $("#simuPanel").load("./simuPanel.html");
+            $("#schedulePanel").load("./schedulePanel.html");
+            $("#coveragePanel").load("./coveragePanel.html");
+            $("#satelliteAttPanel").load("./satelliteAttributes.html");
+            $("#faciltityAttPanel").load("./FacilityAttributes.html");
+            $("#settingsPanel").load("./settingsPanel.html");
+        });
+    </script>
+</head>
+
+<body style="background: #000; font-family: FangSong">
+    <div id="cesiumContainer" class="fullWindow"></div>
+    <div id="loadingIndicator" class="loadingIndicator"></div>
+    <!-- satellite panel -->
+    <div id="satellite_panel"></div>
+    <!-- satellite panel end-->
+
+    <!-- aoi labels  -->
+    <div id="positionlabels"></div>
+    <!-- aoi labels  end-->
+
+    <!--simu settings div-->
+    <div id="simuPanel"></div>
+    <!--simu settings div end-->
+
+    <!--facilityAttPanel div-->
+    <div id="faciltityAttPanel"></div>
+    <!--facilityAttPanel div end-->
+
+    <!--settingsPanel div-->
+    <div id="settingsPanel"></div>
+    <!--settingsPanel div end-->
+
+    <div id="mode-realtime-simulation" style="padding: 15px !important">
+        <input type="button" id="modeRealtime" class="mode-button btn" data-content="实时模式" data-trigger="hover" data-toggle="popover" data-placement="top" />
+        <input type="button" id="modeSimu" class="mode-button btn" data-content="仿真模式" data-trigger="hover" data-toggle="popover" data-placement="top" />
+        <input type="button" id="coverage" class="mode-button btn" data-content="覆盖分析" data-trigger="hover" data-toggle="popover" data-placement="top" />
+        <input type="button" id="TaskSchedule" class="mode-button btn" data-html="true" data-content="<h5>任务规划<h5/>" data-trigger="hover" data-toggle="popover" data-placement="top" />
+        <input type="button" id="SystemSettings" class="mode-button btn" data-html="true" data-content="<h5>系统设置<h5/>" data-trigger="hover" data-toggle="popover" data-placement="top" />
+        <!-- <input type="button" id="AboutUs" class="mode-button btn" data-html="true" data-content="<h4>CSTK</h4> <p> <li>支持在线、离线方式对卫星基本信息、轨道参数等基础数据进行引接和存储；</li> <li>支持卫星目标数据增、删、改、查等基本管理功能，以及星历数据发布、检索、浏览和下载等功能;</li><li>支持根据卫星星历数据进行轨道计算，提供星下点计算、点过境预报、区域过境预报、反航天侦察等功能;</li> <li>支持卫星基本信息、三维模型、轨道模型以及卫星运行轨迹、卫星覆盖范围等仿真展示;</li>  <li>contact me: 微信 714601476 Tel:18501934583</li></p> " -->
+        <input type="button" id="help" class="mode-button btn" data-html="true" data-content="<h5>帮助文档<h5/>" data-trigger="hover" data-toggle="popover" data-placement="top" />
+        <input type="button" id="AboutUs" class="mode-button btn" data-html="true" data-content="<h4>CSTK</h4> <p> <li>支持在线、离线方式对卫星基本信息、轨道参数等基础数据进行引接和存储；</li> <li>支持卫星目标数据增、删、改、查等基本管理功能，以及星历数据发布、检索、浏览和下载等功能;</li><li>支持根据卫星星历数据进行轨道计算，提供星下点计算、点过境预报、区域过境预报、反航天侦察等功能;</li> <li>支持卫星基本信息、三维模型、轨道模型以及卫星运行轨迹、卫星覆盖范围等仿真展示;</li> </p> "
+            data-trigger="hover" data-toggle="popover" data-placement="top" />
+    </div>
+    <!-- 显示轨迹的表格-->
+    <div id="create-track-table-container" class="panel panel-primary fade in collapse">
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#create-track-table-div" class="close">&times;</a
+        >
+        <h4 class="panel-title">卫星轨迹</h4>
+      </div>
+      <div
+        id="create-track-table-div"
+        class="panel-collapse collapse in"
+        style="width: 100%; height: 100%"
+      ></div>
+    </div>
+
+    <!--progressbar-->
+    <div id="global-progressbar" class="progress progress-striped">
+      <div
+        id="global-progressbar-only"
+        class="progress-bar progress-bar-info"
+        role="progressbar"
+        aria-valuenow="60"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <span class="sr-only">10% 完成（危险）</span>
+      </div>
+    </div>
+    <!--progressbar end-->
+
+    <!-- task schedule panel -->
+    <div id="schedulePanel"></div>
+    <!-- task schedule panel end-->
+    <!-- coverage analasys panel -->
+    <div id="coveragePanel"></div>
+    <!-- coverage analasys panel end-->
+    <!-- satellite attributes panel -->
+    <div id="satelliteAttPanel"></div>
+    <!-- satellite attributes panel end-->
+    <!-- facility attributes panel -->
+    <div id="facility"></div>
+    <!-- facility attributes panel end-->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js "
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa "
+      crossorigin="anonymous "
+    ></script>
+    <script src="./static/js/events.js" type="module"></script>
+
+    <!-- <script
+      type="text/javascript"
+      src="./static/js/gantt/dhtmlxgantt.js?v=7.0.13"
+      charset="UTF-8"
+    ></script> -->
+
+    <script
+      type="text/javascript"
+      src="./static/js/toastr.min.js"
+      charset="UTF-8"
+    ></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- https://www.bootstrapselect.cn/ -->
+    <!-- <script src="./static/js/bootstrap-select.min.js"></script> -->
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script> -->
+    <script
+      type="text/javascript"
+      src="./static/jquery-ui-1.12.1/jquery-ui.min.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./static/js/bootstrap-datetimepicker.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./static/js/locales/bootstrap-datetimepicker.zh-CN.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./static/js/bootstrap-select.min.js"
+    ></script>
+
+    <script>
+      $(function () {
+        $("[data-toggle='popover']").popover();
+      });
+    </script>
+  </body>
+</html>
